@@ -2,7 +2,7 @@
 using Meicrosoft.Store.Application.Contracts;
 using Meicrosoft.Store.Domain.ProductsAggregate;
 
-namespace Meicrosoft.Store.Application.Commands
+namespace Meicrosoft.Store.Application.Commands.Create
 {
     public class CreateProductCommand : IRequest<ResponseContract>
     {

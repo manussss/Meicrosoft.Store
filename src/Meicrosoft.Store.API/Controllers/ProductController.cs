@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Meicrosoft.Store.API.Controllers
 {
+    [ApiVersion("1.0")]
+    [ApiController]
+    [Route("api/v{version:apiVersion}/products")]
     public class ProductController(IMediator mediator, IProductQuery query) : ControllerBase
     {
         [HttpGet]

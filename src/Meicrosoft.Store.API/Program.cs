@@ -9,6 +9,14 @@ builder.Services.AddRepositoriesInjection();
 builder.Services.AddDatabaseInjection(builder.Configuration);
 builder.Services.AddMediatorInjection();
 
+builder.Services.AddApiVersioning();
+
+builder.Services.AddVersionedApiExplorer(options =>
+{
+    options.GroupNameFormat = "'v'VVV";
+    options.SubstituteApiVersionInUrl = true;
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -18,9 +26,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseApiVersioning();
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();

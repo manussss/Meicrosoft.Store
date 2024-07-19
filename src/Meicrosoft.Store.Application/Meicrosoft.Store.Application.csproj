@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Meicrosoft.Store.Domain\Meicrosoft.Store.Domain.csproj" />
+    <ProjectReference Include="..\Meicrosoft.Store.Infra\Meicrosoft.Store.Infra.csproj" />
   </ItemGroup>
 
 </Project>

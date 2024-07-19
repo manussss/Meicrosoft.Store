@@ -7,7 +7,27 @@ namespace Meicrosoft.Store.Infra.Repositories
     {
         public async Task<Product> CreateAsync(Product product)
         {
-            return (await context.Product.AddAsync(product)).Entity;
+            var result = (await context.Product.AddAsync(product)).Entity;
+            await context.SaveChangesAsync();
+
+            return result;
+        }
+
+        public async Task<int> UpdateAsync(Product productUpdated)
+        {
+            context.Product.Update(productUpdated);
+            return await context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(Product product)
+        {
+            context.Product.Remove(product);
+            await context.SaveChangesAsync();
+        }
+
+        public async Task<Product?> GetByIdAsync(Guid id)
+        {
+            return await context.Product.FindAsync(id);
         }
     }
 }

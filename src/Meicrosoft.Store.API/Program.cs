@@ -1,14 +1,17 @@
 using Meicrosoft.Store.API.Middlewares;
 using Meicrosoft.Store.IoC;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddRepositoriesInjection();
 builder.Services.AddDatabaseInjection(builder.Configuration);
+builder.Services.AddRepositoriesInjection();
 builder.Services.AddMediatorInjection();
+
+builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
 
 builder.Services.AddApiVersioning();
 

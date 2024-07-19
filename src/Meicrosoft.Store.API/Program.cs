@@ -1,3 +1,4 @@
+using Meicrosoft.Store.API.Middlewares;
 using Meicrosoft.Store.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,5 +30,6 @@ app.UseHttpsRedirection();
 app.UseApiVersioning();
 app.UseAuthorization();
 app.MapControllers();
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.Run();
